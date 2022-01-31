@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../assets/stylesheets/application.css">
+</head>
+<body>
+<div class="container">
+    <header class="edge">
+        <h1>投稿一覧</h1>
+    </header>
+    <section>
+        <p><%= notice %></p>
+        <%= link_to '新規投稿する', new_post_path %>
+        <p>内容</p>
+
+        <% @posts.each do |post| %>
+            <table class="writing">
+            <tr>
+                <td><%= post.content %></td>
+                <td><%= link_to '編集', edit_post_path(post.id) %></td>
+                <td><%= link_to '削除', post_path(post.id), method: :delete, data: { confirm: '削除していいですか？'} %></td>
+            </tr>
+            </table>
+        <% end %>
+    </section>
+
+    <footer class="edge">
+        <p>Writing</p>
+    </footer>
+</div>
+</body>
+</html>
